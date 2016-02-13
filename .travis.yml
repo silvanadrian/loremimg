@@ -9,5 +9,4 @@ env:
 install:
   - pip install django==$DJANGO --quiet
   - pip install -r requirements.txt
-script:
-  – python manage.py test
+script: python manage.py test
