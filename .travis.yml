@@ -4,7 +4,6 @@ python:
   - "3.2"
   - "3.3"
   - "3.4"
-  - "3.5"
 env:
   - DJANGO=1.9.5
 install:
