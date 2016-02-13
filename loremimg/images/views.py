@@ -5,7 +5,6 @@ from django.http import HttpResponse
 
 from .models import Photo
 from random import choice
-from serializers import PhotoSerializer
 from PIL import Image, ImageOps, ImageFilter
 
 @api_view(['GET'])

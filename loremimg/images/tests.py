@@ -4,10 +4,14 @@ from django.core.files import File
 from PIL import Image
 from django.db import IntegrityError
 from rest_framework.test import APITestCase
+from django.core.files.uploadedfile import SimpleUploadedFile
+import os
 
 class PhotoTests(TestCase):
     def setUp(self):
-        Photo.objects.create(name="photo", category="PEOPLE",image=File(open("./test.png")))
+        script_dir = os.path.dirname(__file__)
+        Photo.objects.create(name="photo", category="PEOPLE",
+        image = SimpleUploadedFile(name='test.png', content=open(script_dir + "/test.png", 'rb').read(), content_type='image/png'))
 
     def test_Photo_members(self):
         photo = Photo.objects.get(name="photo")
@@ -27,13 +31,15 @@ class PhotoTests(TestCase):
 class PhotoAPITests(APITestCase):
 
     def setUp(self):
-        Photo.objects.create(name="photo", category="PEOPLE",image=File(open("./test.png")))
+        script_dir = os.path.dirname(__file__)
+        Photo.objects.create(name="photo", category="PEOPLE",
+        image = SimpleUploadedFile(name='test.png', content=open(script_dir + "/test.png", 'rb').read(), content_type='image/png'))
 
     def test_Get_Image(self):
-        response = self.client.get('/photo/')
+        response = self.client.get("/photo/")
         self.assertEqual(response.status_code, 200)
-        self.assertTrue(response.has_header('content-type'))
-        self.assertEqual(response._headers.get('content-type'), ('Content-Type', 'image/png'))
+        self.assertTrue(response.has_header("content-type"))
+        self.assertEqual(response._headers.get("content-type"), ("Content-Type", "image/png"))
 
     def test_Get_Square(self):
         response = self.client.get('/200/')

@@ -1,7 +1,8 @@
 from django.conf.urls import url
 from django.contrib import admin
+from loremimg.images import views
 from rest_framework.urlpatterns import format_suffix_patterns
-from images import views
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
