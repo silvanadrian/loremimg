@@ -4,7 +4,6 @@ from django.core.files import File
 from PIL import Image
 from django.db import IntegrityError
 from rest_framework.test import APITestCase
-import StringIO
 
 class PhotoTests(TestCase):
     def setUp(self):
