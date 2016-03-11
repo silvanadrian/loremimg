@@ -6,11 +6,11 @@ from django.db import models
 class Photo(models.Model):
     name = models.CharField(max_length=40, unique=True)
     CATEGORY = (
-        ('LANDSCAPES', 'Landscapes'),
-        ('ARCHITECTURE', 'Architecture'),
-        ('PEOPLE', 'People'),
-        ('ANIMALS', 'Animals'),
-        ('VARIOUS', 'Various')
+        ('landscapes', 'Landscapes'),
+        ('architecture', 'Architecture'),
+        ('people', 'People'),
+        ('animals', 'Animals'),
+        ('various', 'Various')
     )
-    category = models.CharField(max_length=20,choices=CATEGORY,default='VARIOUS')
+    category = models.CharField(max_length=20,choices=CATEGORY,default='various')
     image = models.ImageField(upload_to='images')
