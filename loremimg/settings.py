@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SITE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(SITE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -23,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'sd-6=2=v$-3@4z322#jxw_#m!pw-me09#e$3l=4lryrc99a5yl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -120,4 +121,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(SITE_DIR, "static"),
+)
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
